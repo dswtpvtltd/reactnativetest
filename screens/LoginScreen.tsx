@@ -90,6 +90,7 @@ const LoginScreen = ({navigation}: LoginType) => {
         <View>
           <Button
             title="Post Listing"
+            testID="testPostListing"
             onPress={() => navigation.navigate('Post')}
           />
         </View>

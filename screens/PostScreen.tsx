@@ -7,6 +7,8 @@ import {
   FlatList,
   Alert,
   TouchableOpacity,
+  ActivityIndicator,
+  Button,
 } from 'react-native';
 import {StackNavigatorType} from '../navigation';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -42,7 +44,7 @@ const Item = ({item, navigation}: ItemProps) => {
 
 const PostScreen = ({navigation}: PostType) => {
   const [post, setPost] = useState([]);
-  useEffect(() => {
+  const loadPost = () => {
     axios({method: 'get', url: 'https://jsonplaceholder.typicode.com/posts'})
       .then((res: any) => {
         setPost(res.data);
@@ -50,18 +52,35 @@ const PostScreen = ({navigation}: PostType) => {
       .catch(_error => {
         Alert.alert('Error', 'There are error');
       });
+  };
+
+  useEffect(() => {
+    loadPost();
   }, []);
+
+  const renderLoader = () => {
+    return (
+      <View>
+        <ActivityIndicator size={'large'} color={'red'} />
+      </View>
+    );
+  };
   return (
     <View style={styles.container}>
       <View>
         <Header title="Post Listing" />
       </View>
       <View>
+        <Button title="Load Data" onPress={loadPost} />
+      </View>
+      <View>
         <FlatList
           data={post}
           keyExtractor={(item: any) => `${item.id.toString()}`}
           renderItem={({item}) => <Item item={item} navigation={navigation} />}
-          initialNumToRender={10}
+          ListFooterComponent={renderLoader}
+          onEndReached={loadPost}
+          onEndReachedThreshold={0}
         />
       </View>
     </View>

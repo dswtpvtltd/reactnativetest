@@ -6,13 +6,12 @@
  */
 
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
 import PostScreen from './screens/PostScreen';
 import {StackNavigatorType} from './navigation';
 import PostDetailScreen from './screens/PostDetailScreen';
-
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const StackNavigator = createNativeStackNavigator<StackNavigatorType>();
 
 function App(): JSX.Element {
