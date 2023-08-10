@@ -9,9 +9,6 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 First you need to run
 
 ```bash
-#using npm
-npm install
-
 #or using yarn
 yarn install
 
@@ -38,9 +35,6 @@ Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _roo
 ### For Android
 
 ```bash
-# using npm
-npm run android
-
 # OR using Yarn
 yarn android
 ```
@@ -48,9 +42,6 @@ yarn android
 ### For iOS
 
 ```bash
-# using npm
-npm run ios
-
 # OR using Yarn
 yarn ios
 ```
